@@ -21,7 +21,7 @@
             flex: 1;
         }
         #diagram-input {
-            width: 100%;
+            width: 90%;
             height: 200px;
         }
         #diagram-container {
@@ -48,16 +48,16 @@
 <body>
     <header>
         <h1>js-sequence-diagrams</h1>
-        <small>Turns text into UML sequence diagrams</small>
     </header>
-    <br>
     <div class="container">
         <div class="column">
+            <small>Turns text into UML sequence diagrams</small>
+<br><br>
             <textarea id="diagram-input">Title: Hello World
 A->B: Hello
 B->C:
 C->A: Back to A.
-A->F: Go for F
+A->D: Go for D
             </textarea>
             <br>
             <button id="render-button">Render Diagram</button>
