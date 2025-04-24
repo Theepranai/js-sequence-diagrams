@@ -21,11 +21,18 @@
             flex: 1;
         }
         #diagram-input {
-            width: 90%;
+            width: 100%;
             height: 200px;
         }
         #diagram-container {
             min-height: 200px;
+        }
+        /* Adjust column widths */
+        .column:first-child {
+            flex: 0 0 40%; /* 40% width for the first column */
+        }
+        .column:last-child {
+            flex: 0 0 60%; /* 60% width for the second column */
         }
         /* Responsive design for mobile view */
         @media (max-width: 768px) {
@@ -54,6 +61,10 @@ A->F: Go for F
             </textarea>
             <br>
             <button id="render-button">Render Diagram</button>
+            <select id="theme-selector">
+                <option value="hand">Hand-drawn</option>
+                <option value="simple">Simple</option>
+            </select>
         </div>
         <div class="column" id="diagram-container"></div>
     </div>
@@ -62,6 +73,7 @@ A->F: Go for F
             // Handle the render button click
             $("#render-button").click(function () {
                 const input = $("#diagram-input").val();
+                const theme = $("#theme-selector").val(); // Get the selected theme
                 const $container = $("#diagram-container");
 
                 // Clear the container before rendering a new diagram
@@ -69,7 +81,7 @@ A->F: Go for F
 
                 try {
                     const diagram = Diagram.parse(input);
-                    diagram.drawSVG("diagram-container", { theme: "hand" });
+                    diagram.drawSVG("diagram-container", { theme: theme }); // Use the selected theme
                 } catch (error) {
                     $container.html(`<p style="color: red;">Error: ${error.message}</p>`);
                 }
